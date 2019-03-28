@@ -31,7 +31,7 @@
 				var div = document.createElement('div');
 				document.body.appendChild(div);
 				div.style.cssText="width:0px;height:40px;color:#fff;background-color:#12709e;font-size:17px;text-align:center;transition:width .2s,height .2s,transform .2s;border-radius:5px;position:fixed;top:20%;right:0;display:flex;justify-content:center;align-items:center;";
-				div.innerHTML='<span style="height:60%;overflow:hidden">复制成功</span>';;
+				div.innerHTML='<span style="height:60%;overflow:hidden">复制成功</span>';
 				setTimeout( function(){
 					div.style.cssText+="width: 120px;";
 				}, 10 );
