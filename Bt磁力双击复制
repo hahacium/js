@@ -1,0 +1,47 @@
+// ==UserScript==
+// @name         Bt磁力复制
+// @namespace    http://tampermonkey.net/
+// @version      0.1
+// @description  try to take over the world!
+// @author       You
+// @grant        none
+// @include      *.bturl.pw/*
+// @include      *.btrabbit.xyz/*
+// @include      *.bteat.com/*
+// @include      *btdiggs.org/*
+// ==/UserScript==
+
+(function() {
+     'use strict';
+      var cli=document.getElementsByTagName("a");
+	  for(var i=0;i<cli.length;i++){
+		var urlRgx=/^magnet:\?xt=urn:btih:.*$/;
+		if(urlRgx.test(cli[i].getAttribute("href")))
+		{
+			var ok=cli[i].getAttribute("href");
+			document.ondblclick=function(){
+				var input = document.createElement('input');
+				document.body.appendChild(input);
+				input.setAttribute('value', ok);
+				input.select();
+					if (document.execCommand("copy")) {
+						document.execCommand("copy");
+				}
+				input.style.cssText="display: none;";
+				var div = document.createElement('div');
+				document.body.appendChild(div);
+				div.style.cssText="width:0px;height:40px;color:#fff;background-color:#12709e;font-size:17px;text-align:center;transition:width .2s,height .2s,transform .2s;border-radius:5px;position:fixed;top:20%;right:0;display:flex;justify-content:center;align-items:center;";
+				div.innerHTML='<span style="height:60%;overflow:hidden">复制成功</span>';;
+				setTimeout( function(){
+					div.style.cssText+="width: 120px;";
+				}, 10 );
+				setTimeout( function(){
+					div.style.cssText+="width: 0px;";
+				}, 1000 );
+			}
+
+			break;
+		}
+
+	}
+})();
