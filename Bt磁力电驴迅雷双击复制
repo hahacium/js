@@ -1,22 +1,20 @@
 // ==UserScript==
-// @name         Bt磁力双击复制
-// @namespace    http://tampermonkey.net/
-// @version      0.1
-// @description  try to take over the world!
-// @author       You
-// @grant        hahacium
-// @include      *.bturl.pw/*
-// @include      *.btrabbit.xyz/*
-// @include      *.bteat.com/*
-// @include      *btdiggs.org/*
+// @name         Bt磁力电驴迅雷双击复制
+// @namespace    https://github.com/hahacium
+// @version      0.2
+// @description  识别任意BT网站的磁力链接、电驴链接、迅雷下载链接，双击当前页面即可快速复制[hahacium（GitHub）]
+// @author       hahacium（GitHub）
+// @include      *
 // ==/UserScript==
 
 (function() {
      'use strict';
       var cli=document.getElementsByTagName("a");
+      var urlmag=/^magnet:\?xt=urn:btih:.*$/;
+      var urled2k=/^ed2k:.*$/;
+      var urlthunder=/^thunder:.*$/;
 	  for(var i=0;i<cli.length;i++){
-		var urlRgx=/^magnet:\?xt=urn:btih:.*$/;
-		if(urlRgx.test(cli[i].getAttribute("href")))
+		if(urlmag.test(cli[i].getAttribute("href"))||urled2k.test(cli[i].getAttribute("href"))||urlthunder.test(cli[i].getAttribute("href")))
 		{
 			var ok=cli[i].getAttribute("href");
 			document.ondblclick=function(){
